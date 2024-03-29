@@ -1,0 +1,23 @@
+<!-- templates/index.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Movie Recommendations</h1>
+<div>
+    <label for="genre">Filter by Genre:</label>
+    <select id="genre">
+        <option value="">All</option>
+        <option value="Drama">Drama</option>
+        <option value="Crime">Crime</option>
+        <option value="Action">Action</option>
+        <!-- Add more genres as needed -->
+    </select>
+</div>
+<ul id="movie-list">
+    {% for movie in movies %}
+    <li>
+        <a href="{{ url_for('movie_details', movie_id=movie.id) }}">{{ movie.title }} ({{ movie.year }})</a>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}
